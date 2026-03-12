@@ -16,9 +16,6 @@ const observer = new IntersectionObserver(entries => {
 
 reveals.forEach(el => observer.observe(el));
 
-// EmailJS Configuration
-emailjs.init('lm_GYwTIlzZ87UFjY');
-
 // Contact Form
 const contactForm = document.getElementById('contactForm');
 const submitBtn = document.querySelector('.contact-form button');
@@ -38,14 +35,17 @@ if (contactForm) {
     try {
       // Send email using EmailJS
       const response = await emailjs.send(
-        'service_krxkdwn', 
+        'service_9ookyda', 
         'template_5uvzm4q', 
         {
           from_name: name,
           from_email: email,
           message: message,
+          // IMPORTANT: You must add {{reply_to}} to the "Reply To" field in your EmailJS Dashboard template
+          reply_to: email,
           to_email: 'amosalah092@gmail.com'
-        }
+        },
+        '4mFlwg7HJxXVy7rrv'
       );
       
       // Success
